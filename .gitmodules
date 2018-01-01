@@ -1,0 +1,3 @@
+[submodule "libasteroid"]
+	path = libasteroid
+	url = https://github.com/AsteroidOS/libasteroid
