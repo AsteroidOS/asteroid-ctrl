@@ -17,10 +17,6 @@
 
 #include "controller.h"
 
-#include "libasteroid/scanner.h"
-#include "libasteroid/watch.h"
-#include "libasteroid/watchconnection.h"
-
 Controller::Controller(QObject *parent) : QObject(parent)
 {
     m_watchConnection = new WatchConnection();
