@@ -20,9 +20,9 @@
 
 #include <QObject>
 
-#include "libasteroid/scanner.h"
-#include "libasteroid/watch.h"
-#include "libasteroid/watchconnection.h"
+#include "scanner.h"
+#include "watch.h"
+#include "watchconnection.h"
 
 class Controller : public QObject
 {
