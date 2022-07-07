@@ -28,18 +28,18 @@ Controller::Controller(QObject *parent) : QObject(parent)
     m_timeService = m_watchConnection->timeService();
     m_weatherService = m_watchConnection->weatherService();
 
-    connect(m_batteryService, SIGNAL(ready()), this, SLOT(batteryServiceReady()));
-    connect(m_mediaService, SIGNAL(ready()), this, SLOT(mediaServiceReady()));
-    connect(m_notificationService, SIGNAL(ready()), this, SLOT(notificationServiceReady()));
-    connect(m_screenshotService, SIGNAL(ready()), this, SLOT(screenshotServiceReady()));
-    connect(m_timeService, SIGNAL(ready()), this, SLOT(timeServiceReady()));
-    connect(m_weatherService, SIGNAL(ready()), this, SLOT(weatherServiceReady()));
+    connect(m_batteryService, &BatteryService::ready, this, &Controller::batteryServiceReady);
+    connect(m_mediaService, &MediaService::ready, this, &Controller::mediaServiceReady);
+    connect(m_notificationService, &NotificationService::ready, this, &Controller::notificationServiceReady);
+    connect(m_screenshotService, &ScreenshotService::ready, this, &Controller::screenshotServiceReady);
+    connect(m_timeService, &TimeService::ready, this, &Controller::timeServiceReady);
+    connect(m_weatherService, &WeatherService::ready, this, &Controller::weatherServiceReady);
 
-    connect(m_mediaService, SIGNAL(play()), this, SLOT(onPlay()));
-    connect(m_screenshotService, SIGNAL(screenshotReceived(QByteArray)), this, SLOT(onScreenshotReceived(QByteArray)));
+    connect(m_mediaService, &MediaService::play, this, &Controller::onPlay);
+    connect(m_screenshotService, &ScreenshotService::screenshotReceived, this, &Controller::onScreenshotReceived);
 
     m_sc = new Scanner(this);
-    connect(m_sc, SIGNAL(watchFound(Watch*)), this, SLOT(onWatchFound(Watch*)));
+    connect(m_sc, &Scanner::watchFound, this, &Controller::onWatchFound);
 
     m_sc->startScan();
 }
