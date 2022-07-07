@@ -78,7 +78,7 @@ void Controller::notificationServiceReady()
     qInfo() << "Notification service:";
     qInfo() << " sending dummy notification";
 
-    m_notificationService->insertNotification("org.asteroid.ctrl", 1, "asteroid-ctrl", "ios-checkmark-circle", "Summary", "Body", NotificationService::Strong);
+    m_notificationService->insertNotification("org.asteroid.ctrl", 1, "asteroid-ctrl", "ios-checkmark-circle", "Summary", "Body", "strong");
 }
 
 void Controller::screenshotServiceReady()
