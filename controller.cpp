@@ -109,27 +109,17 @@ void Controller::weatherServiceReady()
 
     m_weatherService->setCity("City");
 
-    QList<short> ids;
-    ids.append(200);
-    ids.append(300);
-    ids.append(600);
-    ids.append(701);
-    ids.append(800);
-    m_weatherService->setIds(ids);
-
-    QList<short> maxTemps;
-    ids.append(0);
-    ids.append(1);
-    ids.append(2);
-    ids.append(3);
-    ids.append(4);
-    m_weatherService->setMaxTemps(maxTemps);
-
-    QList<short> minTemps;
-    ids.append(-1);
-    ids.append(-2);
-    ids.append(-3);
-    ids.append(-4);
-    ids.append(-5);
-    m_weatherService->setMinTemps(minTemps);
+    QList<WeatherDay> weather{
+        /* each weather day is icon, lowtemp, hitemp
+         * with icons as defined here: https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
+         * and with temperature in K
+         * we can specify up to five
+         */
+        { 200, 273-5, 273+5 },
+        { 300, 273-4, 273+4 },
+        { 600, 273-3, 273+3 },
+        { 701, 273-2, 273+2 },
+        { 803, 273-1, 273+1 },
+    };
+    m_weatherService->setWeatherDays(weather);
 }
